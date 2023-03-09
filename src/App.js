@@ -1,16 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import logo from './logo.svg';
 import { Configuration, OpenAIApi } from 'openai';
-import TextField  from '@mui/material/TextField';
-import Button from '@mui/material/Button'
-import Alert from '@mui/material/Alert'
-import Avatar from '@mui/material/Avatar'
 import './App.css';
-import Modal from '@mui/material/Modal';
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { BsFillPersonFill } from 'react-icons/bs'
-import { MdHealthAndSafety } from "react-icons/md";
 import { BiHealth } from "react-icons/bi";
+import { IoMdSettings } from "react-icons/io";
 
 function App(props) {
 
@@ -25,16 +19,12 @@ function App(props) {
     boxShadow: 24,
     p: 4,
   };
-
+  
   const [prompt, setPrompt] = useState("")
   const [response, setResponse] = useState("")
   const [chatMessages, setChatMessages] = useState([])
   const [isOpen, setIsOpen] = useState(false)
-  const [specialty, setSpecialty] = useState("")
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [specialty, setSpecialty] = useState("⛑️ Medical Assistant")
 
   const configuration = new Configuration({
     apiKey: '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'
@@ -128,6 +118,12 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
+        {specialty ? <div style={{ display: 'flex', width: '30rem'}}>
+          <IoMdSettings size={23} color="black" style={{ width: '2rem', height: '2rem', backgroundColor: '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} />
+          <p style={{ fontWeight: '600', width: '30rem', textAlign: 'left', padding: 10, borderRadius: 10, color: 'black', fontSize: 12, backgroundColor: '#EEEE', marginBottom: 20}}>System Instruction: {specialty}</p>
+        </div>
+        : null
+        }
         {chatMessages.map((item, index) => (
           <>
           <div style={{ width: '30rem', display: 'flex', flexDirection: 'row',  justifyContent: 'flex-start', marginBottom: 20}}>
