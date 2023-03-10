@@ -132,6 +132,10 @@ function App(props) {
 
   console.log(width, isMobile)
 
+  const inputPadding = {
+    
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -151,10 +155,10 @@ function App(props) {
             </>
           ))}
           <div style={{ marginTop: 'auto', position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-            <input style={{ paddingLeft: isMobile ? 260 : 250, width: '100%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 2, borderColor: '#EEEE', padding: 6, color: 'black', fontSize: 12, boxSizing: 'border-box' }} onKeyDown={(event) => {event.code === 'Enter' && prompt != '' ? generateResponse() : console.log() }} placeholder="Ask a medical question..." value={prompt} onChange={(event) => setPrompt(event.target.value)} />
-            <button onClick={() => setIsOpen((prev) => !prev)} style={{ color: 'white', fontWeight: '600', fontSize: 12, height: '1.96rem', width: isMobile ? '40%' : '31%', position: 'absolute', backgroundColor: '#1f7efb', left: 0.5, borderTopLeftRadius: 4, borderBottomLeftRadius: 4, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>{specialty ? specialty : 'Normal' } {isOpen ? <AiFillCaretUp size={13} style={{ marginLeft: 4}} /> : <AiFillCaretDown size={13} style={{ marginLeft: 4}} />} </button>
+            <input style={{ paddingLeft: 10, width: '100%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 2, borderColor: '#EEEE', padding: 6, color: 'black', fontSize: 12, boxSizing: 'border-box' }} onKeyDown={(event) => {event.code === 'Enter' && prompt != '' ? generateResponse() : console.log() }} placeholder="Ask a medical question..." value={prompt} onChange={(event) => setPrompt(event.target.value)} />
+            <button onClick={() => setIsOpen((prev) => !prev)} style={{ color: 'white', fontWeight: '600', fontSize: 12, height: '1.96rem', width: isMobile ? '40%' : '31%', position: 'absolute', backgroundColor: '#1f7efb', right: 0.5, borderTopRightRadius: 4, borderBottomRightRadius: 4, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>{specialty ? specialty : 'Normal' } {isOpen ? <AiFillCaretUp size={13} style={{ marginLeft: 4}} /> : <AiFillCaretDown size={13} style={{ marginLeft: 4}} />} </button>
             {isOpen ? 
-              <div ref={ref} style={{ backgroundColor: 'white', display: 'block', width: '31%', height: '1310%', borderWidth: 1, borderColor: '#EEEE', borderRadius: 4, marginTop: '-93%', position: 'absolute', left: 0.5}}>
+              <div ref={ref} style={{ backgroundColor: 'white', display: 'block', width: '31%', height: isMobile ? '1270%' : '1600%', borderWidth: 1, borderColor: '#EEEE', borderRadius: 4, marginTop: isMobile ? -450 : -550, position: 'absolute', right: 0.5}}>
                   {specialties.map((item, index) => (
                     <button key={index} style={{ color: 'black', fontSize: 12, marginBottom: 2, padding: 5, width: '100%', height: '10%'}} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} onClick={(value) => showSpecialty(value)}>{item.name}</button>
                   ))}
