@@ -7,18 +7,6 @@ import { BiHealth } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 
 function App(props) {
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
   
   const [prompt, setPrompt] = useState("")
   const [response, setResponse] = useState("")
@@ -58,13 +46,13 @@ function App(props) {
       "role": "Skin health and treatment"
     },
     {
+      "name": "👀 Ophthalmology",
+      "role": "Eye health and treatment"
+    },
+    {
       "name": "🦴 Orthopedic",
       "role": "Bone and joint health and treatment"
     },
-    {
-      "name": "👀 Ophthalmology",
-      "role": "Eye health and treatment"
-    }
   ]
 
   const ref = useRef(null);
@@ -144,7 +132,7 @@ function App(props) {
             : null
           }
         </div>
-        <p style={{ color: '#BDBDBD', fontSize: 10, marginTop: 3, width: '28rem' }}>This tool does not provide medical advice, it is intended for informational purposes only. If you think you may have a medical emergency, immediately call your doctor or dial 911.</p>
+        <p style={{ marginBottom: 20, color: '#BDBDBD', fontSize: 10, marginTop: 3, width: '28rem' }}>This tool does not provide medical advice, it is intended for informational purposes only. If you think you may have a medical emergency, immediately call your doctor or dial 911.</p>
       </header>
     </div>
   );
