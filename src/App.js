@@ -5,6 +5,7 @@ import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { BsFillPersonFill } from 'react-icons/bs'
 import { BiHealth } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 function App(props) {
   
@@ -130,15 +131,33 @@ function App(props) {
     }
   }
 
-  console.log(width, isMobile)
-
-  const inputPadding = {
-    
-  }
-
   return (
     <div className="App">
       <header className="App-header">
+        <div style={{ width: '20%',display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 100}}>
+          <img src='./logo.jpeg' style={{ width: 42, height: 42, borderRadius: 7, marginRight: 10}}></img>
+          <h1 style={{ color: 'black', fontSize: 40, fontWeight: '600' }}>DocMind</h1>
+        </div>
+        <p style={{ color: 'black', fontSize: 14, fontWeight: '400' }}>Medical Questions Answered 24/7</p>
+        <p style={{ color: 'black', fontSize: 14, fontWeight: '400'}}></p>
+        <div style={{ marginBottom: 100, marginTop: 20, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'baseline' }}>
+          <div style={{ textAlign: 'left', marginTop: 20, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',}}>
+            <IoIosCheckmarkCircle size={20} color="#53d769" />
+            <p style={{ marginLeft: 4, color: 'black', fontSize: 11, fontWeight: '500'}}>Blazing Fast Response</p>
+          </div>
+          <div style={{ marginTop: 5, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',}}>
+            <IoIosCheckmarkCircle size={20} color="#53d769" />
+            <p style={{ marginLeft: 4, color: 'black', fontSize: 11, fontWeight: '500'}}>Doctor Specialties</p>
+          </div>
+          <div style={{ marginTop: 5, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',}}>
+            <IoIosCheckmarkCircle size={20} color="#53d769" />
+            <p style={{ marginLeft: 4, color: 'black', fontSize: 11, fontWeight: '500'}}>Symptom Checker</p>
+          </div>
+          <div style={{ marginTop: 5, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',}}>
+            <IoIosCheckmarkCircle size={20} color="#53d769" />
+            <p style={{ marginLeft: 4, color: 'black', fontSize: 11, fontWeight: '500'}}>Use your own API Key (no limit!)</p>
+          </div>
+        </div>
         <div className="bottom" style={{ width: isMobile ? '93%' : '40%' }}>
           {specialty ? <div style={{ marginTop: 'auto', display: 'flex', width: '100%'}}>
             <IoMdSettings size={23} color="black" style={{ width: 35, height: 35, backgroundColor: '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} />
@@ -149,7 +168,7 @@ function App(props) {
           {chatMessages.map((item, index) => (
             <>
             <div style={{ marginTop: 'auto', width: '100%', display: 'flex', flexDirection: 'row',  justifyContent: 'flex-start', marginBottom: 20}}>
-              {index % 2 === 0 ? <BsFillPersonFill size={23} color="black" style={{ width: 35, height: 35, backgroundColor: '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} /> : <BiHealth size={23} color="black" style={{ width: '2rem', height: '2rem', backgroundColor: '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} />}
+              {index % 2 === 0 ? <BsFillPersonFill size={23} color="black" style={{ width: 35, height: 35, backgroundColor: '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} /> : <img src='./logo.jpeg' style={{ width: 35, height: 35, marginRight: 8, padding: 3, borderRadius: 7}}></img>}
               <p key={index} style={{ fontWeight: '600', width: '100%', textAlign: 'left', padding: 10, borderRadius: 10, color: index % 2 === 0 ? 'white' : 'black', fontSize: 12, backgroundColor: index % 2 === 0 ? '#147efb' : '#EEEE',}}>{item}</p>
             </div>
             </>
@@ -166,7 +185,7 @@ function App(props) {
               : null
             }
           </div>
-          <p style={{ marginBottom: 20, color: '#BDBDBD', fontSize: 10, marginTop: 3, width: '100%' }}>This tool does not provide medical advice, it is intended for informational purposes only. If you think you may have a medical emergency, immediately call your doctor or dial 911.</p>
+          <p style={{ marginBottom: 60, color: '#BDBDBD', fontSize: 10, marginTop: 3, width: '100%' }}>This tool does not provide medical advice, it is intended for informational purposes only. If you think you may have a medical emergency, immediately call your doctor or dial 911.</p>
         </div>
       </header>
     </div>
