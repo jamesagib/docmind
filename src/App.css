@@ -26,6 +26,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-top: 'auto',
 }
 
 .App-link {
@@ -40,3 +41,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bottom {
+  margin-top: auto;
+  color: black
+}
+
+/* @media only screen and (min-width: 1024px) {
+  .bottom {
+    width: '100%'
+  }
+} */
