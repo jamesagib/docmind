@@ -129,7 +129,7 @@ function App(props) {
         messages: [{"role": "user", "content": `${prompt}`},],
       })
 
-      const content = res.data.choices[0].message.content.slice(1)
+      const content = res.data.choices[0].message.content.slice(2)
       console.log(content)
       chatMessages.push(content)
       setResponse(content)
@@ -412,8 +412,8 @@ function App(props) {
             </>
           ))}
           <div style={{ marginTop: 'auto', width: '100%', height: 35, display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative', }}>
-            <input style={{ paddingLeft: 10, width: '65%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 2, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : '#EEEE', fontSize: 12, boxSizing: 'border-box', }} onKeyDown={(event) => {event.code === 'Enter' && prompt != '' ? generateResponse() : console.log() }} placeholder="Ask a medical question..." value={prompt} onChange={(event) => setPrompt(event.target.value)} />
-            <button onClick={() => setIsOpen((prev) => !prev)} style={{ color: 'white', fontWeight: '600', fontSize: 12, height: '100%', width: isMobile ? '33%' : '33%', position: 'absolute', backgroundColor: '#1f7efb', right: 0.5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>{specialty ? specialty : 'Normal' } {isOpen ? <AiFillCaretUp size={13} style={{ marginLeft: 4}} /> : <AiFillCaretDown size={13} style={{ marginLeft: 4}} />} </button>
+            <input style={{ paddingLeft: 10, width: '60%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 2, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : '#EEEE', fontSize: 12, boxSizing: 'border-box', }} onKeyDown={(event) => {event.code === 'Enter' && prompt != '' ? generateResponse() : console.log() }} placeholder="Ask a medical question..." value={prompt} onChange={(event) => setPrompt(event.target.value)} />
+            <button onClick={() => setIsOpen((prev) => !prev)} style={{ color: 'white', fontWeight: '600', fontSize: 12, height: '100%', width: isMobile ? '39%' : '39%', position: 'absolute', backgroundColor: '#1f7efb', right: 0.5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>{specialty ? specialty : 'Normal' } {isOpen ? <AiFillCaretUp size={13} style={{ marginLeft: 4}} /> : <AiFillCaretDown size={13} style={{ marginLeft: 4}} />} </button>
             {isOpen ? 
               <div ref={ref} style={{ backgroundColor: darkMode ? "#1e1e1e" : 'white', display: 'block', width: '31%', height: isMobile ? '1270%' : '1600%', borderWidth: 1, borderColor: '#EEEE', borderRadius: 4, marginTop: isMobile ? -450 : -550, position: 'absolute', right: 0.5}}>
                   {specialties.map((item, index) => (
