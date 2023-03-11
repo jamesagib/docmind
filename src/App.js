@@ -15,7 +15,9 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
-import { borderRadius } from '@mui/system';
+
+import { Spinner } from "react-activity";
+import "react-activity/dist/library.css";
 
 function App(props) {
 
@@ -35,6 +37,7 @@ function App(props) {
   // JSON.parse(localStorage.getItem('apiKey'))
   const [apiKey, setAPIKey] = useState(JSON.parse(localStorage.getItem('apiKey')))
   const [validKey, setValidKey] = useState(JSON.parse(localStorage.getItem('validKey')))
+  const [verifyingKey, setVerifyingKey] = useState()
   const [showErrorText, setShowErrorText] = useState()
 
   const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')))
@@ -259,6 +262,7 @@ function App(props) {
   }
 
   const enterAPIKey = async () => {
+    setVerifyingKey(true)
     const res = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{"role": "user", "content": ""},],
@@ -268,6 +272,7 @@ function App(props) {
       setShowErrorText(true)
     })
     if(res) {
+      setVerifyingKey(false)
       setValidKey(true)
       setOpen(false)
       showConfetti()
@@ -351,13 +356,13 @@ function App(props) {
           <Box sx={style}>
             <h1 style={{ color: darkMode ? 'white' : 'black', fontWeight: 'bold', fontSize: 20}}>Enter Your OpenAI API Key: </h1>
             <p style={{ color: darkMode ? 'white' : 'black', fontSize: 12 }}>To use DocMind, you need a valid OpenAI API Key</p>
-            <input style={{ paddingLeft: 10, width: '98%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 1, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : '#EEEE', fontSize: 12, marginTop: 20,}} placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx" value={apiKey} onChange={(event) => setAPIKey(event.target.value)}></input>
+            <input style={{ paddingLeft: 10, width: '98%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 1, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : 'black', fontSize: 12, marginTop: 20,}} placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx" value={apiKey} onChange={(event) => setAPIKey(event.target.value)}></input>
             <a href="https://platform.openai.com/account/api-keys" target="_blank" >
               <button style={{ background: 'transparent', fontSize: 12, color: '#1f7efb', fontWeight: '600', marginTop: 10 }}>How do I get a key?</button>
             </a>
             {showErrorText ? <p style={{ color: 'red', fontSize: 13, fontWeight: '500'}}>Invalid API Key. Please make sure your OpenAI API key is valid and working.</p> : null}
             <div>
-              <button onClick={enterAPIKey} style={{ color: 'white', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: '#1f7efb', borderRadius: 4, padding: 10, marginTop: 15, width: '20%' }}>Save</button>
+              <button disabled={verifyingKey} onClick={enterAPIKey} style={{ color: 'white', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: '#1f7efb', borderRadius: 4, padding: 10, marginTop: 15, width: '20%'}}>{verifyingKey ? <Spinner animating={true} size={12} color="#EEEE" speed={1}/> : "Save"}</button>
               <button onClick={() => setOpen(false)} style={{ color: darkMode ? '#EEEE' : 'black', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: 'transparent', borderRadius: 4, padding: 10, marginTop: 15, width: '20%', marginLeft: 10 }}>Cancel</button>
             </div>
           </Box>
@@ -381,7 +386,7 @@ function App(props) {
                 </a>
                 {showErrorText ? <p style={{ color: 'red', fontSize: 13, fontWeight: '500'}}>Invalid API Key. Please make sure your OpenAI API key is valid and working.</p> : null}
                 <div>
-                  <button onClick={enterAPIKey} style={{ color: 'white', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: '#1f7efb', borderRadius: 4, padding: 10, marginTop: 15, width: '20%' }}>Save</button>
+                  <button onClick={enterAPIKey} style={{ color: 'white', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: '#1f7efb', borderRadius: 4, padding: 10, marginTop: 15, width: '20%'}}>{verifyingKey ? <Spinner animating={true} size={8} color="#EEEE" speed={1}/> : "Save2"}</button>
                   <button onClick={() => setOpen(false)} style={{ color: darkMode ? '#EEEE' : 'black', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: 'transparent', borderRadius: 4, padding: 10, marginTop: 15, width: '20%', marginLeft: 10 }}>Cancel</button>
                 </div>
               </Box>
