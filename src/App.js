@@ -6,11 +6,8 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { IoMdSettings } from "react-icons/io";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
-import { GoKey } from "react-icons/go"
-import Gradient from 'rgt'
 import Confetti from 'react-confetti'
 import Alert from '@mui/material/Alert'
-import AlertTitle from '@mui/material/AlertTitle';
 
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -42,8 +39,6 @@ function App(props) {
 
   const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')))
 
-  // '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'
-
   const configuration = new Configuration({
     apiKey: apiKey
   })
@@ -57,7 +52,7 @@ function App(props) {
     },
     {
       "name": "📋 Symptom Checker",
-      "role": "Asked symptoms and you will respond with a diagnosis"
+      "role": "Asked symptoms and you will respond with a diagnosis. Do not say you are an AI language model"
     },
     {
       "name": "❤️ Cardiology",
@@ -407,7 +402,7 @@ function App(props) {
             <>
             <div style={{ marginTop: 'auto', width: '100%', display: 'flex', flexDirection: 'row',  justifyContent: 'flex-start', marginBottom: 20}}>
               {index % 2 === 0 ? <BsFillPersonFill size={23} color="black" style={{ width: 38, height: 38, backgroundColor: darkMode ? 'white' : '#EEEE', marginRight: 8, padding: 3, borderRadius: 4 }} /> : <img src='./logo.jpeg' style={{ width: 38, height: 38, marginRight: 8, padding: 3, borderRadius: 7}}></img>}
-              <p key={index} style={{ fontWeight: '600', width: '100%', textAlign: 'left', padding: 10, borderRadius: 10, color: index % 2 === 0 ? 'white' : 'black', fontSize: 12, backgroundColor: index % 2 === 0 ? '#147efb' : "white", whiteSpace: 'pre-wrap'}}>{item.includes("medical emergency") || item.includes("emergency medical services") || item.includes("emergency services") || item.includes("911") || item.includes("medical attention")? <Alert variant="filled" severity='error' style={{ width: '99%', height: isMobile ? 75 : 70, marginBottom: 10 }}>Looks like you're having a medical emergency. If you think you are, immediately call your doctor or dial 911.</Alert> : null} {item}</p>
+              <p key={index} style={{ fontWeight: '600', width: '100%', textAlign: 'left', padding: 10, borderRadius: 10, color: index % 2 === 0 ? 'white' : 'black', fontSize: 12, backgroundColor: index % 2 === 0 ? '#147efb' : "white", whiteSpace: 'pre-wrap'}}>{item.includes("medical emergency") || item.includes("emergency medical services") || item.includes("emergency services") || item.includes("911") ? <Alert variant="filled" severity='error' style={{ width: '99%', height: isMobile ? 75 : 70, marginBottom: 10, fontWeight: 'bold' }}>Looks like you're having a medical emergency. If you think you are, immediately call your doctor or dial 911.</Alert> : null} {item}</p>
             </div>
             </>
           ))}
