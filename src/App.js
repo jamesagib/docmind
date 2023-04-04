@@ -266,7 +266,7 @@ function App(props) {
     .catch((error) => {
       console.log(error)
       setShowErrorText(true)
-      setKeyError(error)
+      // setKeyError(error)
     })
     if(res) {
       setVerifyingKey(false)
@@ -353,7 +353,7 @@ function App(props) {
           <Box sx={style}>
             <h1 style={{ color: darkMode ? 'white' : 'black', fontWeight: 'bold', fontSize: 20}}>Enter Your OpenAI API Key: </h1>
             <p style={{ color: darkMode ? 'white' : 'black', fontSize: 12 }}>To use DocMind, you need a valid OpenAI API Key</p>
-            <input style={{ paddingLeft: 10, width: '98%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 1, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : 'black', fontSize: 12, marginTop: 20,}} placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx" onChange={(event) => setAPIKey(event.target.value)}></input>
+            <input style={{ paddingLeft: 10, width: '98%', height: '100%', backgroundColor: 'transparent', borderRadius: 4, borderWidth: 1, borderColor: '#EEEE', padding: 6, color: darkMode ? 'white' : 'black', fontSize: 12, marginTop: 20,}} value={apiKey} placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxx" onChange={(event) => setAPIKey(event.target.value)}></input>
             <a href="https://platform.openai.com/account/api-keys" target="_blank" >
               <button style={{ background: 'transparent', fontSize: 12, color: '#1f7efb', fontWeight: '600', marginTop: 10 }}>How do I get a key?</button>
             </a>
