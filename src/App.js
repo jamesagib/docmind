@@ -258,7 +258,7 @@ function App(props) {
   }
 
   const enterAPIKey = async () => {
-    // setVerifyingKey(true)
+    setVerifyingKey(true)
     const res = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{"role": "user", "content": ""},],
@@ -357,7 +357,6 @@ function App(props) {
             <a href="https://platform.openai.com/account/api-keys" target="_blank" >
               <button style={{ background: 'transparent', fontSize: 12, color: '#1f7efb', fontWeight: '600', marginTop: 10 }}>How do I get a key?</button>
             </a>
-            <p>{apiKey}</p>
             {keyError ? <p style={{ fontSize: 13, padding: 2}} >{keyError}</p> : null }
             {showErrorText ? <p style={{ color: 'red', fontSize: 13, fontWeight: '500'}}>Invalid API Key. Please make sure your OpenAI API key is valid and working.</p> : null}
             <div>
