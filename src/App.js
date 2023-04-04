@@ -257,7 +257,7 @@ function App(props) {
   }
 
   const enterAPIKey = async () => {
-    setVerifyingKey(true)
+    // setVerifyingKey(true)
     const res = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [{"role": "user", "content": ""},],
