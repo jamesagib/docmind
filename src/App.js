@@ -30,7 +30,7 @@ function App(props) {
   const [specialty, setSpecialty] = useState("⛑️ Medical Assistant")
   const [width, setWindowWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false)
-  const [keyError, setKeyError] = useState('')
+  const [keyError, setKeyError] = useState()
 
   // JSON.parse(localStorage.getItem('apiKey'))
   const [apiKey, setAPIKey] = useState(JSON.parse(localStorage.getItem('apiKey')))
