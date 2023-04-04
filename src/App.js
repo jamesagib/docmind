@@ -30,6 +30,7 @@ function App(props) {
   const [specialty, setSpecialty] = useState("⛑️ Medical Assistant")
   const [width, setWindowWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false)
+  const [keyError, setKeyError] = useState('')
 
   // JSON.parse(localStorage.getItem('apiKey'))
   const [apiKey, setAPIKey] = useState(JSON.parse(localStorage.getItem('apiKey')))
@@ -265,6 +266,7 @@ function App(props) {
     .catch((error) => {
       console.log(error)
       setShowErrorText(true)
+      setKeyError(error)
     })
     if(res) {
       setVerifyingKey(false)
@@ -356,6 +358,7 @@ function App(props) {
               <button style={{ background: 'transparent', fontSize: 12, color: '#1f7efb', fontWeight: '600', marginTop: 10 }}>How do I get a key?</button>
             </a>
             {showErrorText ? <p style={{ color: 'red', fontSize: 13, fontWeight: '500'}}>Invalid API Key. Please make sure your OpenAI API key is valid and working.</p> : null}
+            <p style={{ fontSize: 13, padding: 2}} >{keyError}</p>
             <div>
               <button onClick={enterAPIKey} style={{ color: 'white', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: '#1f7efb', borderRadius: 4, padding: 10, marginTop: 15, width: '20%'}}>{verifyingKey ? <Spinner animating={true} size={12} color="#EEEE" speed={1}/> : "Save"}</button>
               <button onClick={() => setOpen(false)} style={{ color: darkMode ? '#EEEE' : 'black', fontWeight: 'bold', fontSize: 12, height: '100%', backgroundColor: 'transparent', borderRadius: 4, padding: 10, marginTop: 15, width: '20%', marginLeft: 10 }}>Cancel</button>
