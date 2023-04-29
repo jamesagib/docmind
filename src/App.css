@@ -43,18 +43,7 @@
   }
 }
 
-
 .bottom {
   margin-top: auto;
   color: black;
 }
-
-/* @media only screen and (min-width: 1024px) {
-  .bottom {
-    width: '100%'
-  }
-} */
-
-/* .googleLogin {
-  margin-top: 200px;
-} */
